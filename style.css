@@ -1,0 +1,447 @@
+/* =====================
+   Design Tokens
+===================== */
+:root {
+  --bg-page: #0f172a;
+  --bg-card: #111827;
+  --bg-input: #020617;
+
+  --color-text-primary: #f9fafb;
+  --color-text-secondary: #d1d5db;
+  --color-text-muted: #9ca3af;
+
+  --border-default: #374151;
+  --accent: #6366f1;
+
+  --btn-bg: #000000;
+  --btn-bg-hover: #1f2933;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+/* =====================
+   Reset / Base
+===================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg-page);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =====================
+   Layout
+===================== */
+.login-container {
+  width: 320px;
+  padding: 30px;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.login-title {
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--color-text-primary);
+}
+
+/* =====================
+   Form
+===================== */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  background: var(--bg-input);
+  color: var(--color-text-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+}
+
+.form-group input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.4);
+}
+
+/* =====================
+   Button
+===================== */
+button {
+  width: 100%;
+  padding: 10px;
+  background: var(--btn-bg);
+  color: #ffffff;
+  font-size: 16px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.25s ease, opacity 0.2s ease;
+}
+
+button:hover {
+  background: var(--btn-bg-hover);
+}
+
+button.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+button.loading .btn-text {
+  visibility: hidden;
+}
+
+button.loading::after {
+  content: "Loading…";
+  font-size: 14px;
+}
+
+/* =====================
+   Forgot Password
+===================== */
+.forgot-password {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.forgot-password a {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+}
+
+/* =====================
+   Theme Toggle
+===================== */
+
+#themeToggle {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  background: transparent;
+  border: 1px solid var(--border-default);
+  border-radius: 9999px;
+
+  font-size: 16px;
+  line-height: 1;
+
+  color: var(--color-text-primary);
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease;
+}
+
+#themeToggle:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: scale(1.05);
+}
+
+/* Light theme specific */
+body.light #themeToggle {
+  color: #f59e0b;          /* warm sun yellow */
+  border-color: #f59e0b;
+}
+
+
+/* =====================
+   Light Theme
+===================== */
+body.light {
+  --bg-page: #f4f6f8;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+
+  --color-text-primary: #111827;
+  --color-text-secondary: #374151;
+  --color-text-muted: #6b7280;
+
+  --border-default: #d1d5db;
+  --btn-bg: #111827;
+  --btn-bg-hover: #1f2937;
+}
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px; /* space for the icon */
+  box-sizing: border-box; /* ensure padding doesn't overflow */
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--color-text-muted);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 2; /* ensures it sits above input but doesn't block hover */
+  pointer-events: auto; /* allows clicks on icon */
+}
+
+.password-toggle:hover {
+  color: var(--color-text-primary);
+}
+
+/* Error State */
+input.error {
+  border-color: #dc2626; /* red-600 */
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.3);
+}
+
+small.error-message {
+  display: block;
+  color: #dc2626;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.switch-page {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.switch-page a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.switch-page a:hover {
+  text-decoration: underline;
+}
+
+/* =====================
+   Responsive Design
+===================== */
+
+/* Small screens */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 20px;
+  }
+
+  .login-title {
+    font-size: 1.6rem;
+  }
+
+  button {
+    font-size: 15px;
+    padding: 8px;
+  }
+
+  #themeToggle {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    top: 16px;
+    right: 16px;
+  }
+}
+
+/* Medium screens */
+@media (min-width: 481px) and (max-width: 768px) {
+  .login-container {
+    width: 90%;
+    padding: 25px;
+  }
+
+  .login-title {
+    font-size: 1.7rem;
+  }
+}
+
+/* =====================
+   Fully Responsive Design
+===================== */
+
+/* Extra small devices (phones, 320px – 480px) */
+@media (max-width: 480px) {
+  body {
+    padding: 15px;
+  }
+
+  .login-container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .login-title {
+    font-size: 1.5rem;
+  }
+
+  .form-group label {
+    font-size: 13px;
+  }
+
+  .form-group input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  button {
+    font-size: 15px;
+    padding: 8px;
+  }
+
+  .password-toggle {
+    width: 22px;
+    height: 22px;
+    font-size: 14px;
+    right: 8px;
+  }
+
+  #themeToggle {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    top: 12px;
+    right: 12px;
+  }
+
+  .switch-page {
+    font-size: 13px;
+  }
+}
+
+/* Small to medium devices (phones + small tablets, 481px – 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .login-container {
+    width: 90%;
+    max-width: 380px;
+    padding: 25px;
+  }
+
+  .login-title {
+    font-size: 1.7rem;
+  }
+
+  .form-group input {
+    font-size: 15px;
+    padding: 9px;
+  }
+
+  button {
+    font-size: 15px;
+    padding: 9px;
+  }
+
+  #themeToggle {
+    width: 34px;
+    height: 34px;
+    font-size: 15px;
+    top: 16px;
+    right: 16px;
+  }
+}
+
+/* Medium devices (tablets, 769px – 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .login-container {
+    width: 80%;
+    max-width: 400px;
+    padding: 28px;
+  }
+
+  .login-title {
+    font-size: 1.8rem;
+  }
+
+  .form-group input {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+/* Large devices (desktops, 1025px+) */
+@media (min-width: 1025px) {
+  .login-container {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .login-title {
+    font-size: 1.9rem;
+  }
+}
+
+.form-message {
+  font-size: 14px;
+  margin-bottom: 12px;
+  text-align: center;
+  display: none; /* hidden by default */
+}
+
+.form-message.success {
+  color: #22c55e; /* green for success */
+}
+
+.form-message.error {
+  color: #ef4444; /* red for errors */
+}

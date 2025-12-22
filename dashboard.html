@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="dashboard-container">
+      <h1>Welcome!</h1>
+      <p>You are successfully logged in.</p>
+      <button id="logoutBtn">Logout</button>
+    </main>
+
+    <script>
+      const logoutBtn = document.getElementById("logoutBtn");
+
+      logoutBtn.addEventListener("click", () => {
+        // Clear session or storage if you add authentication later
+        alert("You have been logged out");
+        window.location.href = "login.html";
+      });
+    </script>
+  </body>
+</html>
