@@ -9,6 +9,8 @@ const USERS_FILE = "users.json";
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static("public"));
+
 
 function readUsers() {
   const data = fs.readFileSync(USERS_FILE, "utf8");
