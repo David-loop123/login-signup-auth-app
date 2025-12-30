@@ -70,11 +70,13 @@
       loginMessage.style.display = "block";
 
       if (data.success) {
-  form.reset();
-  clearErrors();
+        localStorage.setItem("isAuthenticated", "true");
 
-  // Redirect to dashboard
-  window.location.href = "dashboard.html";
+        form.reset(); 
+        clearErrors();
+
+      // Redirect to dashboard
+       window.location.href = "dashboard.html";
 }
 
 
